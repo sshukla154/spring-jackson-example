@@ -14,9 +14,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
  *
  */
 
-@ActiveProfiles("snake")
+@ActiveProfiles("kebab")
 @JsonTest
-public class BeerDTOSnakeTest extends BaseTest {
+public class BeerDTOKebabTest extends BaseTest {
 
 	@Test
 	void testSerializeDTO() throws JsonProcessingException {
@@ -28,7 +28,7 @@ public class BeerDTOSnakeTest extends BaseTest {
 
 	@Test
 	void testDeserializeDTO() throws JsonProcessingException {
-		String jsonString = "{\"id\":\"327388aa-8bc5-4a44-80e1-50f3685d42f2\",\"beer_name\":\"Budwiser\",\"beer_style\":\"Ale\",\"upc\":123321123,\"price\":12.99,\"created_date\":\"2020-11-28T06:36:04.7695482+05:30\",\"last_updated_date\":\"2020-11-28T06:36:04.7705456+05:30\"}";
+		String jsonString = "{\"id\":\"b8038dae-22ed-4040-aa78-9dc7898ff9cd\",\"beer-name\":\"Budwiser\",\"beer-style\":\"Ale\",\"upc\":123321123,\"price\":12.99,\"created-date\":\"2020-11-28T06:45:11.0749547+05:30\",\"last-updated-date\":\"2020-11-28T06:45:11.0749547+05:30\"}";
 		BeerDTO beerDTO = objectMapper.readValue(jsonString, BeerDTO.class);
 		System.out.println("Deserializing : " + beerDTO.toString());
 	}
