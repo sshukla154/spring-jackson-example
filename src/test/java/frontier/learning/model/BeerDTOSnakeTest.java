@@ -27,18 +27,11 @@ public class BeerDTOSnakeTest extends BaseTest {
 		// {"id":"327388aa-8bc5-4a44-80e1-50f3685d42f2","beer_name":"Budwiser","beer_style":"Ale","upc":123321123,"price":12.99,"created_date":"2020-11-28T06:36:04.7695482+05:30","last_updated_date":"2020-11-28T06:36:04.7705456+05:30"}
 	}
 
-	/* @Disabled : failing because of @JsonFormat at createdDate */
-
-	@Disabled
 	@Test
 	void testDeserializeDTO() throws JsonProcessingException {
-		String jsonString = "{\"id\":\"327388aa-8bc5-4a44-80e1-50f3685d42f2\",\"beer_name\":\"Budwiser\",\"beer_style\":\"Ale\",\"upc\":123321123,\"price\":12.99,\"created_date\":\"2020-11-28T06:36:04.7695482+05:30\",\"last_updated_date\":\"2020-11-28T06:36:04.7705456+05:30\"}";
+		String jsonString = "{\"beer_name\":\"Budwiser\",\"beer_style\":\"Ale\",\"upc\":123321123,\"price\":\"12.99\",\"created_date\":\"2020-11-28T07:53:18+0530\",\"last_updated_date\":\"2020-11-28T07:53:18.6526305+05:30\",\"without_format_local_date\":\"2020-11-28\",\"with_format_local_date\":\"20201128\",\"beerId\":\"c65d8bda-700d-446d-807f-f5dbc56e2218\"}";
 		BeerDTO beerDTO = objectMapper.readValue(jsonString, BeerDTO.class);
 		System.out.println("Deserializing - 1 : " + beerDTO.toString());
-
-		jsonString = "{\"beerName\":\"Budwiser\",\"beerStyle\":\"Ale\",\"upc\":123321123,\"price\":12.99,\"createdDate\":\"2020-11-28T06:53:44.9544074+05:30\",\"lastUpdatedDate\":\"2020-11-28T06:53:44.9544074+05:30\",\"beerId\":\"50954c32-5986-44c6-a148-298776dcda37\"}";
-		beerDTO = objectMapper.readValue(jsonString, BeerDTO.class);
-		System.out.println("Deserializing - 2 : " + beerDTO.toString());
 	}
 
 }
