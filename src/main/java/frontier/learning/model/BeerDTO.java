@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Positive;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -21,7 +22,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class BeerDTO {
 
-	/* Will give the property name as "beerId" instead of "id" */
+	/*
+	 * @JsonProperty - Will over-ride the Naming property defined. Will give the
+	 * property name as "beerId" instead of "id".
+	 */
 	@Null
 	@JsonProperty("beerId")
 	private UUID id;
@@ -35,8 +39,22 @@ public class BeerDTO {
 	@Positive
 	private Long upc;
 
+	/*
+	 * @JsonFormat - Will over-ride the fomat of the property.
+	 * 
+	 * Eg: in price it is BigDecimal, which is formatted to String
+	 */
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private BigDecimal price;
+
+	/*
+	 * @JsonFormat - Will over-ride the fomat of the property.
+	 * 
+	 * Eg: in price it is BigDecimal, which is formatted to String
+	 */
+	@JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
 	private OffsetDateTime createdDate;
+
 	private OffsetDateTime lastUpdatedDate;
 
 }
